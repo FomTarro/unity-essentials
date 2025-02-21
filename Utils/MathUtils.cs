@@ -1,5 +1,3 @@
-using System;
-
 namespace Skeletom.Essentials.Utils {
 
     public static class MathUtils {
