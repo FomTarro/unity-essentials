@@ -13,6 +13,11 @@ An abstract class which `Singleton` inherits from. Allows singletons (or other c
 
 For example, you may want your UI Manager to set up before you have your Save Manager load data in and populate said UI.
 
+### `ObjectPool<T>`
+A class which instantiates and stores objects of type `T`, preventing them from needing to instantiate them at runtime. Useful for things like projectiles or particles, which may need to be summoned in rapid, large bursts.
+
+New objects will be instantiated and added to the pool as needed, if the pool is ever completely exausted at once.
+
 ## I/O
 
 ### `LoggingManager`
@@ -46,10 +51,22 @@ An interface which wraps a Text UI component, such as the UnityEngine.UI `Text` 
 
 This is used by the `LocalizedText` component so that it can easily localize text regardless of how the text is displayed.
 
+### `Editor/CSVPuller`
+An editor extension class that allows you to provide the URL of a Google Sheet and automatically download the contents into a target TextAsset as a CSV, for use as a string table with the `LocalizationManager`.
+
 ## Utils
 
-### `HTTPUtils`
-
 ### `MathUtils`
+A utility class that does what it says on the tin. Useful math functions, wow!
+
+### `EnumUtils`
+A utility class for dealing with Enums and other enumerables. Specifically, I always find myself wanting a Wait routine that can be interrupted at any frame, which this provides.
+
+### `HTTPUtils`
+A utility class that provides an easy, callback-driven set of methods for making GET and POST requests from Unity.
+Leveraged by the later `VersionUtils` class to check a remote server for version updates.
 
 ### `VersionUtils`
+A utility class which provides an easy, callback-driven method for checking if a new version of the application exists. 
+
+This one's a lifesaver for me, as it allows users of my various toys and tools to be proactively informed when I release updates, without needing some kind of launcher or other platform.
